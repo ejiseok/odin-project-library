@@ -7,6 +7,31 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <button class="new-book-btn">New Book</button>
+
+  <dialog class="create-book-modal">
+    <form action="#" method="post">
+      <label for="title">Title: </label>
+      <input type="text" name="title" id="title">
+      <label for="pages">Pages: </label>
+      <input type="number" name="pages" id="pages">
+      <label for="readed">Readed: </label>
+      <input type="checkbox" name="readed" id="readed">
+      <button type="submit">Add</button>
+    </form>
+  </dialog>
+
+  <div class="book-container">
+    <div class="book">
+      <div class="title"></div>
+      <div class="pages"></div>
+      <div class="book-btn-container">
+        <button class="readed-btn">Readed</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
