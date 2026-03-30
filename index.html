@@ -11,12 +11,19 @@
 
   <dialog class="create-book-modal">
     <form action="#" method="post">
-      <label for="title">Title: </label>
-      <input type="text" name="title" id="title">
-      <label for="pages">Pages: </label>
-      <input type="number" name="pages" id="pages">
-      <label for="readed">Readed: </label>
-      <input type="checkbox" name="readed" id="readed">
+      <h2>New Book</h2>
+      <div class="input-item-container">
+        <label for="title">Title: </label>
+        <input type="text" name="title" id="title">
+      </div>
+      <div class="input-item-container">
+        <label for="pages">Pages: </label>
+        <input type="number" name="pages" id="pages">
+      </div>
+      <div class="input-item-container">
+        <label for="readed">Readed: </label>
+        <input type="checkbox" name="readed" id="readed">
+      </div>
       <div class="modal-btn-container">
         <button type="submit" class="modal-add-btn">Add</button>
         <button type="button" class="modal-close-btn">Close</button>
