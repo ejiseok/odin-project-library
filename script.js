@@ -1,11 +1,11 @@
 let myLibrary = [
-  new Book(crypto.randomUUID(), "book1", "123", true),
-  new Book(crypto.randomUUID(), "book2", "234", false),
-  new Book(crypto.randomUUID(), "book3", "345", false),
+  // new Book("book1", "123", true),
+  // new Book("book2", "234", false),
+  // new Book("book3", "345", false),
 ];
 
-function Book(id, title, pages, readed) {
-  this.id = id;
+function Book(title, pages, readed) {
+  this.id = crypto.randomUUID();
   this.title = title;
   this.pages = pages;
   this.readed = readed;
@@ -80,6 +80,29 @@ function createBookElement(bookInfo) {
   return bookElement;
 }
 
+function clickAddBook(e) {
+  e.preventDefault();
+  
+  const title = titleInput.value;
+  const pages = pagesInput.value;
+  const readed = readedInput.checked;
+
+  if (title === "" && pages === "") {
+    return;
+  }
+
+  const book = new Book(title, pages, readed);
+  myLibrary.push(book);
+
+  titleInput.value = "";
+  pagesInput.value = "";
+  readedInput.checked = false;
+
+  closeCreateBookModal();
+
+  refreshBookList();
+}
+
 function refreshBookList() {
   bookContainer.textContent = "";
   myLibrary.forEach(book => {
@@ -102,7 +125,13 @@ const modalCloseBtn = document.querySelector(".modal-close-btn");
 
 const bookContainer = document.querySelector(".book-container");
 
+const modalAddBtn = document.querySelector(".modal-add-btn");
+const titleInput = document.querySelector("#title");
+const pagesInput = document.querySelector("#pages");
+const readedInput = document.querySelector("#readed");
+
 newBookBtn.addEventListener("click", openCreateBookModal);
 modalCloseBtn.addEventListener("click", closeCreateBookModal);
+modalAddBtn.addEventListener("click", clickAddBook);
 
 refreshBookList();
