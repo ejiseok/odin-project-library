@@ -15,28 +15,14 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-function openCreateBookModal() {
-  createBookModal.showModal();
-}
-
-function closeCreateBookModal() {
-  createBookModal.close();
-}
-
-const newBookBtn = document.querySelector(".new-book-btn");
-
-const createBookModal = document.querySelector(".create-book-modal");
-const modalCloseBtn = document.querySelector(".modal-close-btn");
-
-const bookContainer = document.querySelector(".book-container");
-
-newBookBtn.addEventListener("click", openCreateBookModal);
-modalCloseBtn.addEventListener("click", closeCreateBookModal);
-
-myLibrary.forEach(bookInfo => {
+function createBookElement(bookInfo) {
   const bookElement = document.createElement("div");
   bookElement.classList.add("book");
   
+  const bookId = document.createElement("div");
+  bookId.style.display = "none";
+  bookId.textContent = `${bookInfo.id}`;
+
   const bookInfoContainer = document.createElement("div");
   bookInfoContainer.classList.add("book-info-container");
   
@@ -65,8 +51,36 @@ myLibrary.forEach(bookInfo => {
   bookBtnContainer.appendChild(readBtn);
   bookBtnContainer.appendChild(deleteBtn);
 
+  bookElement.appendChild(bookId);
   bookElement.appendChild(bookInfoContainer);
   bookElement.appendChild(bookBtnContainer);
 
-  bookContainer.appendChild(bookElement);
-});
+  return bookElement;
+}
+
+function refreshBookList() {
+  bookContainer.textContent = "";
+  myLibrary.forEach(book => {
+    bookContainer.appendChild(createBookElement(book));
+  });
+}
+
+function openCreateBookModal() {
+  createBookModal.showModal();
+}
+
+function closeCreateBookModal() {
+  createBookModal.close();
+}
+
+const newBookBtn = document.querySelector(".new-book-btn");
+
+const createBookModal = document.querySelector(".create-book-modal");
+const modalCloseBtn = document.querySelector(".modal-close-btn");
+
+const bookContainer = document.querySelector(".book-container");
+
+newBookBtn.addEventListener("click", openCreateBookModal);
+modalCloseBtn.addEventListener("click", closeCreateBookModal);
+
+refreshBookList();
