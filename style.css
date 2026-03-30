@@ -2,6 +2,7 @@
   --blue-color: #027BFF;
   --gray-color: #6C757D;
   --green-color: #28A745;
+  --red-color: #DC3545;
 }
 
 * {
@@ -78,4 +79,59 @@ body {
   border: none;
   color: white;
   background-color: var(--gray-color);
+}
+
+.book-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.book {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 20px 30px;
+}
+
+.book-info-container .title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.book-info-container .pages {
+  color: gray;
+}
+
+.book-btn-container {
+  display: flex;
+  gap: 10px;
+}
+
+.book-btn-container button {
+  width: 70px;
+  height: 30px;
+}
+
+.book-btn-container .readed-btn {
+  background-color: #28A745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.book-btn-container .read-btn {
+  background-color: white;
+  color: var(--green-color);
+  border: 2px solid var(--green-color);
+  border-radius: 5px;
+}
+
+.book-btn-container .delete-btn {
+  background-color: var(--red-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
 }
