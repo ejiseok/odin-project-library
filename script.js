@@ -27,6 +27,12 @@ function clickReadButton(e) {
   refreshBookList();
 }
 
+function clickDeleteButton(e) {
+  const id = e.target.parentElement.parentElement.children[0].textContent;
+  myLibrary = myLibrary.filter(book => book.id !== id);
+  refreshBookList();
+}
+
 function createBookElement(bookInfo) {
   const bookElement = document.createElement("div");
   bookElement.classList.add("book");
@@ -62,6 +68,7 @@ function createBookElement(bookInfo) {
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add("delete-btn");
   deleteBtn.textContent = "Delete"
+  deleteBtn.addEventListener("click", clickDeleteButton);
 
   bookBtnContainer.appendChild(readBtn);
   bookBtnContainer.appendChild(deleteBtn);
