@@ -1,4 +1,4 @@
-const myLibrary = [
+let myLibrary = [
   new Book(crypto.randomUUID(), "book1", "123", true),
   new Book(crypto.randomUUID(), "book2", "234", false),
   new Book(crypto.randomUUID(), "book3", "345", false),
@@ -15,11 +15,24 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
+function clickReadButton(e) {
+  const id = e.target.parentElement.parentElement.children[0].textContent;
+  myLibrary = myLibrary.map(book => {
+    if (book.id === id) {
+      book.readed = !book.readed;
+      return book;
+    }
+    return book;
+  });
+  refreshBookList();
+}
+
 function createBookElement(bookInfo) {
   const bookElement = document.createElement("div");
   bookElement.classList.add("book");
   
   const bookId = document.createElement("div");
+  bookId.classList.add("book-id");
   bookId.style.display = "none";
   bookId.textContent = `${bookInfo.id}`;
 
@@ -41,8 +54,10 @@ function createBookElement(bookInfo) {
   bookBtnContainer.classList.add("book-btn-container");
 
   const readBtn = document.createElement("button");
-  readBtn.classList.add(bookInfo.readed ? "readed-btn" : "read-btn");
+  readBtn.classList.add("read-btn");
+  if (bookInfo.readed) readBtn.classList.add("readed");
   readBtn.textContent = bookInfo.readed ? "Readed" : "Read";
+  readBtn.addEventListener("click", clickReadButton);
 
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add("delete-btn");
