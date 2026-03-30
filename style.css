@@ -1,0 +1,26 @@
+:root {
+  --blue-color: #027BFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: auto 30%;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.new-book-btn {
+  height: 50px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--blue-color);
+  color: white;
+}
