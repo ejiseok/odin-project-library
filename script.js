@@ -14,3 +14,20 @@ function Book(id, title, pages, readed) {
 function addBookToLibrary(book) {
   myLibrary.push(book);
 }
+
+function openCreateBookModal() {
+  createBookModal.showModal();
+}
+
+function closeCreateBookModal() {
+  createBookModal.close();
+}
+
+const newBookBtn = document.querySelector(".new-book-btn");
+
+const createBookModal = document.querySelector(".create-book-modal");
+const modalCloseBtn = document.querySelector(".modal-close-btn");
+
+newBookBtn.addEventListener("click", openCreateBookModal);
+
+modalCloseBtn.addEventListener("click", closeCreateBookModal);
